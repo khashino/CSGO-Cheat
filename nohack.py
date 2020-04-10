@@ -52,9 +52,17 @@ def esp():
 def radar():
     print("radar is on.")
     clientModule = pm.read_bytes(client.lpBaseOfDll, client.SizeOfImage)
-    address = client.lpBaseOfDll + re.search(rb'\x80\xB9.{5}\x74\x12\x8B\x41\x08', clientModule).start() + 6
+    address = client.lpBaseOfDll + re.search(rb'\x80\xB9.{5}\x74\x12\x8B\x41\x08', clientModule).start() + 6    
     while True:
         pm.write_uchar(address, 0 if pm.read_uchar(address) != 0 else 2)
+        time.sleep(0.5)
+
+def Money():
+    print("radar is on.")
+    clientModule = pm.read_bytes(client.lpBaseOfDll, client.SizeOfImage)
+    address = client.lpBaseOfDll + re.search(rb'.\x0C\x5B\x5F\xB8\xFB\xFF\xFF\xFF',clientModule).start()
+    while True:
+        pm.write_uchar(address, 0xEB if pm.read_uchar(address) == 0x75 else 0x75)
         time.sleep(1)
 
 def main():
@@ -66,7 +74,7 @@ def main():
     print("-----------------------------")
     print("###############################")
 
-    print("1 = wall | 2 = radar")
+    print("1 = wall | 2 = radar | 3 = money show")
     cheat = int(input("Enter Number  :  "))
 
     if cheat == 1:
@@ -75,6 +83,9 @@ def main():
     elif cheat == 2:
         makeitready()
         radar()
+    elif cheat == 3:
+        makeitready()
+        Money()
     else:
         print("bad input!!!")
         exit()
