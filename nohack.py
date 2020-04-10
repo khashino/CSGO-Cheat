@@ -40,14 +40,14 @@ def esp():
                     pm.write_float(glow_manager + entity_glow * 0x38 + 0x4, float(1))   # R
                     pm.write_float(glow_manager + entity_glow * 0x38 + 0x8, float(0))   # G
                     pm.write_float(glow_manager + entity_glow * 0x38 + 0xC, float(0))   # B
-                    pm.write_float(glow_manager + entity_glow * 0x38 + 0x10, float(1))  # Alpha
+                    pm.write_float(glow_manager + entity_glow * 0x38 + 0x10, float(0.5))  # Alpha
                     pm.write_int(glow_manager + entity_glow * 0x38 + 0x24, 1)           # Enable glow
 
                 elif entity_team_id == 3:  # Counter-terrorist
                     pm.write_float(glow_manager + entity_glow * 0x38 + 0x4, float(0))   # R
                     pm.write_float(glow_manager + entity_glow * 0x38 + 0x8, float(0))   # G
                     pm.write_float(glow_manager + entity_glow * 0x38 + 0xC, float(1))   # B
-                    pm.write_float(glow_manager + entity_glow * 0x38 + 0x10, float(1))  # Alpha
+                    pm.write_float(glow_manager + entity_glow * 0x38 + 0x10, float(0.5))  # Alpha
                     pm.write_int(glow_manager + entity_glow * 0x38 + 0x24, 1)           # Enable glow
 def radar():
     print("radar is on.")
