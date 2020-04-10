@@ -18,6 +18,8 @@ install pywin32
 ```
 https://github.com/mhammond/pywin32/releases
 ```
+open the game
+
 run nohack.py
 ```
 python nohack.py
