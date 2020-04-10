@@ -19,25 +19,7 @@ def makeitready():
     client = pymem.process.module_from_name(pm.process_handle, "client_panorama.dll")
 
 
-def arghandler():
-    parser = argparse.ArgumentParser(description="Variables")
-    parser.add_argument('-c', type=int, help='use 1 for wall | 2 for radar ')
-    args = parser.parse_args()
-    #print(getattr(args, 's'))
-    global cheat
-    print("###############################")
-    print("dont use cheat idiot :D")
-    print("just use it when you have to")
-    print("-----------------------------")
-    print("-----------khashi_n----------")
-    print("-----------------------------")
-    print("###############################")
 
-    if not args.c:
-        print("use <-c 1> for wall | <-c 2> for radar")
-        exit()
-    else:
-        cheat = args.c
 
 
 def esp():
@@ -76,12 +58,26 @@ def radar():
         time.sleep(1)
 
 def main():
-    arghandler()
-    makeitready()
+    print("###############################")
+    print("dont use cheat idiot :D")
+    print("just use it when you have to")
+    print("-----------------------------")
+    print("-----------khashi_n----------")
+    print("-----------------------------")
+    print("###############################")
+
+    print("1 = wall | 2 = radar")
+    cheat = int(input("Enter Number  :  "))
+
     if cheat == 1:
+        makeitready()
         esp()
-    elif cheat == 1:
+    elif cheat == 2:
+        makeitready()
         radar()
+    else:
+        print("bad input!!!")
+        exit()
 
 if __name__ == '__main__':
     main()
