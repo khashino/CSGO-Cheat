@@ -1,9 +1,24 @@
 # mycheat
 nothing important
+
+## Usage
+clone project
+```
+git clone https://github.com/khashino/mycheat
+```
+install python
+```
+https://www.python.org/downloads/release/
+```
+install pymem
+```
+pip install pymem
+```
+install pywin32
 ```
 https://github.com/mhammond/pywin32/releases
-pywin32-227.win-amd64-py3.8
-https://github.com/frk1/hazedumper/blob/master/csgo.hpp
 ```
-
-
+run nohack.py
+```
+python nohack.py
+```
