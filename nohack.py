@@ -49,6 +49,14 @@ def esp():
                     pm.write_float(glow_manager + entity_glow * 0x38 + 0xC, float(1))   # B
                     pm.write_float(glow_manager + entity_glow * 0x38 + 0x10, float(0.5))  # Alpha
                     pm.write_int(glow_manager + entity_glow * 0x38 + 0x24, 1)           # Enable glow
+
+                    
+def wall():
+    clientModule = pm.read_bytes(client.lpBaseOfDll, client.SizeOfImage)
+    address = client.lpBaseOfDll + re.search(rb'\x83\xF8.\x8B\x45\x08\x0F',clientModule).start() + 2
+    
+    pm.write_uchar(address, 2 if pm.read_uchar(address) == 1 else 1)
+    
 def radar():
     print("radar is on.")
     clientModule = pm.read_bytes(client.lpBaseOfDll, client.SizeOfImage)
@@ -73,7 +81,7 @@ def main():
     print("-----------------------------")
     print("###############################")
 
-    print("1 = wall | 2 = radar | 3 = money show")
+    print("1 = wall | 2 = radar | 3 = money show | 4 = another wall")
     cheat = int(input("Enter Number  :  "))
 
     if cheat == 1:
@@ -85,6 +93,9 @@ def main():
     elif cheat == 3:
         makeitready()
         Money()
+    elif cheat == 4:
+        makeitready()
+        wall()    
     else:
         print("bad input!!!")
         exit()
