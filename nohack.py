@@ -95,8 +95,9 @@ def main():
     print("")
     print("USAGE:")
     print("1: Wall Hack (Recomended) \n2: radar hack \n3: show enemy money \n4: Another Wall Hack\n5: Turn Off\n6: Exit")
-    cheat = int(input("Enter Number  :  "))
+    
     while True:
+	cheat = int(input("Enter Number  :  "))
         if cheat == 1:
             makeitready()
             esp()
