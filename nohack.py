@@ -52,6 +52,7 @@ def esp():
 
                     
 def wall():
+    print("wall secound is on.")
     clientModule = pm.read_bytes(client.lpBaseOfDll, client.SizeOfImage)
     address = client.lpBaseOfDll + re.search(rb'\x83\xF8.\x8B\x45\x08\x0F',clientModule).start() + 2
     
