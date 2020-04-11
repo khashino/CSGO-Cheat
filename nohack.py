@@ -53,17 +53,16 @@ def radar():
     print("radar is on.")
     clientModule = pm.read_bytes(client.lpBaseOfDll, client.SizeOfImage)
     address = client.lpBaseOfDll + re.search(rb'\x80\xB9.{5}\x74\x12\x8B\x41\x08', clientModule).start() + 6    
-    while True:
-        pm.write_uchar(address, 0 if pm.read_uchar(address) != 0 else 2)
-        time.sleep(0.5)
+    
+    pm.write_uchar(address, 0 if pm.read_uchar(address) != 0 else 2)
+    
 
 def Money():
-    print("money is on.")
+    print("radar is on.")
     clientModule = pm.read_bytes(client.lpBaseOfDll, client.SizeOfImage)
     address = client.lpBaseOfDll + re.search(rb'.\x0C\x5B\x5F\xB8\xFB\xFF\xFF\xFF',clientModule).start()
-    while True:
-        pm.write_uchar(address, 0xEB if pm.read_uchar(address) == 0x75 else 0x75)
-        time.sleep(1)
+    
+    pm.write_uchar(address, 0xEB if pm.read_uchar(address) == 0x75 else 0x75)
 
 def main():
     print("###############################")
