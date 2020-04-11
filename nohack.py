@@ -74,32 +74,51 @@ def Money():
     pm.write_uchar(address, 0xEB if pm.read_uchar(address) == 0x75 else 0x75)
 
 def main():
-    print("###############################")
-    print("dont use cheat idiot :D")
-    print("just use it when you have to")
-    print("-----------------------------")
-    print("-----------khashi_n----------")
-    print("-----------------------------")
-    print("###############################")
-
-    print("1 = wall | 2 = radar | 3 = money show | 4 = another wall")
+    print("         _             _            _       _    _                    _             _        ")
+    print("        /\ \     _    /\ \         / /\    / /\ / /\                /\ \           /\_\      ")
+    print("       /  \ \   /\_\ /  \ \       / / /   / / // /  \              /  \ \         / / /  _   ")
+    print("      / /\ \ \_/ / // /\ \ \     / /_/   / / // / /\ \            / /\ \ \       / / /  /\_\ ")
+    print("     / / /\ \___/ // / /\ \ \   / /\ \__/ / // / /\ \ \          / / /\ \ \     / / /__/ / / ")
+    print("    / / /  \/____// / /  \ \_\ / /\ \___\/ // / /  \ \ \        / / /  \ \_\   / /\_____/ /  ")
+    print("   / / /    / / // / /   / / // / /\/___/ // / /___/ /\ \      / / /    \/_/  / /\_______/   ")
+    print("  / / /    / / // / /   / / // / /   / / // / /_____/ /\ \    / / /          / / /\ \ \      ")
+    print(" / / /    / / // / /___/ / // / /   / / // /_________/\ \ \  / / /________  / / /  \ \ \     ")
+    print("/ / /    / / // / /____\/ // / /   / / // / /_       __\ \_\/ / /_________\/ / /    \ \ \    ")
+    print("\/_/     \/_/ \/_________/ \/_/    \/_/ \_\___\     /____/_/\/____________/\/_/      \_\_\   ")
+    print("")
+    print("Created By:")
+    print("   __     __               __    _            ")
+    print("  / /__  / /  ___ _  ___  / /   (_)       ___ ")
+    print(" /  '_/ / _ \/ _ `/ (_-< / _ \ / /       / _ \ ")
+    print("/_/\_\ /_//_/\_,_/ /___//_//_//_/   ____/_//_/")
+    print("                                   /___/      ")
+    print("")
+    print("USAGE:")
+    print("1: Wall Hack (Recomended) \n2: radar hack \n3: show enemy money \n4: Another Wall Hack\n5: Turn Off\n6: Exit")
     cheat = int(input("Enter Number  :  "))
-
-    if cheat == 1:
-        makeitready()
-        esp()
-    elif cheat == 2:
-        makeitready()
-        radar()
-    elif cheat == 3:
-        makeitready()
-        Money()
-    elif cheat == 4:
-        makeitready()
-        wall()    
-    else:
-        print("bad input!!!")
-        exit()
+    while True:
+        if cheat == 1:
+            makeitready()
+            esp()
+        elif cheat == 2:
+            makeitready()
+            radar()
+        elif cheat == 3:
+            makeitready()
+            Money()
+        elif cheat == 4:
+            makeitready()
+            wall()
+        elif cheat == 5:
+            pm.close_process()
+            print("Its Off Now")
+        elif cheat == 6:
+            pm.close_process()
+            print("See U Soon")
+            time.sleep(1)
+            exit()
+        else:
+            print("beyne gozine ha entekhab kon!!!")
 
 if __name__ == '__main__':
     main()
