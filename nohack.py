@@ -58,7 +58,7 @@ def radar():
         time.sleep(0.5)
 
 def Money():
-    print("radar is on.")
+    print("money is on.")
     clientModule = pm.read_bytes(client.lpBaseOfDll, client.SizeOfImage)
     address = client.lpBaseOfDll + re.search(rb'.\x0C\x5B\x5F\xB8\xFB\xFF\xFF\xFF',clientModule).start()
     while True:
