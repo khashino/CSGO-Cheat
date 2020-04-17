@@ -7,11 +7,11 @@ import argparse
 #https://github.com/danielkrupinski/OneByteWallhack/blob/master/OneByteWallhack.py
 #https://github.com/danielkrupinski/OneByteRadar/blob/master/OneByteRadar.py
 #https://github.com/frk1/hazedumper/blob/master/csgo.hpp
-dwEntityList = (0x4D42A34)
-dwGlowObjectManager = (0x528A810)
+dwEntityList = (0x4D43AB4)
+dwGlowObjectManager = (0x528B880)
 m_iGlowIndex = (0xA428)
 m_iTeamNum = (0xF4)
-dwRadarBase = (0x51777A4)
+dwRadarBase = (0x5178824)
 def makeitready():
     global pm
     global client
