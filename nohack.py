@@ -4,9 +4,7 @@ import re
 import time
 import argparse
 
-#https://github.com/danielkrupinski/OneByteWallhack/blob/master/OneByteWallhack.py
-#https://github.com/danielkrupinski/OneByteRadar/blob/master/OneByteRadar.py
-#https://github.com/frk1/hazedumper/blob/master/csgo.hpp
+
 dwEntityList = (0x4D43AE4)
 dwGlowObjectManager = (0x528B8B8)
 m_iGlowIndex = (0xA428)
@@ -124,3 +122,6 @@ def main():
 if __name__ == '__main__':
     main()
 
+#https://github.com/danielkrupinski/OneByteWallhack/blob/master/OneByteWallhack.py
+#https://github.com/danielkrupinski/OneByteRadar/blob/master/OneByteRadar.py
+#https://github.com/frk1/hazedumper/blob/master/csgo.hpp
