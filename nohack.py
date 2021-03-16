@@ -5,11 +5,11 @@ import time
 import argparse
 
 
-dwEntityList = (0x4DA2F34)
-dwGlowObjectManager = (0x52EB550)
+dwEntityList = (0x4DA2F24)
+dwGlowObjectManager = (0x52EB520)
 m_iGlowIndex = (0xA438)
 m_iTeamNum = (0xF4)
-dwRadarBase = (0x51D7CAC)
+dwRadarBase = (0x51D7C9C)
 dwClientState = (0x58EFE4)
 def makeitready():
     global pm
