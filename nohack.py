@@ -5,12 +5,21 @@ import time
 import argparse
 
 
-dwEntityList = (0x4DA2F24)
-dwGlowObjectManager = (0x52EB520)
-m_iGlowIndex = (0xA438)
-m_iTeamNum = (0xF4)
-dwRadarBase = (0x51D7C9C)
-dwClientState = (0x58EFE4)
+#dwEntityList = (0x4DA2F34)
+#dwGlowObjectManager = (0x52EB550)
+#m_iGlowIndex = (0xA438)
+#m_iTeamNum = (0xF4)
+#dwRadarBase = (0x51D7CAC)
+#dwClientState = (0x58EFE4)
+#dwLocalPlayer = (0xD8B2CC)
+
+dwEntityList = int(81407780)
+dwGlowObjectManager = int(86947104)
+m_iGlowIndex = int(42040)
+m_iTeamNum = int(244)
+dwRadarBase = int(85818524)
+dwClientState = int(5828580)
+dwLocalPlayer = int(14201548)
 def makeitready():
     global pm
     global client
@@ -18,33 +27,78 @@ def makeitready():
     client = pymem.process.module_from_name(pm.process_handle, "client.dll")
 
 
-
-
-
 def esp():
     print("ESP wall is on.")
+    try:
+        pm = pymem.Pymem("csgo.exe")
+    except Exception as e:
+        print(e)
+        MessageBox = ctypes.windll.user32.MessageBoxW
+        MessageBox(None, 'Could not find the csgo.exe process !', 'Error', 16)
+        return
 
+    client = pymem.process.module_from_name(pm.process_handle, "client.dll").lpBaseOfDll
+    glow_manager = pm.read_int(client + dwGlowObjectManager)
+    #read("glow")
+    print("before while")
     while True:
-        glow_manager = pm.read_int(client.lpBaseOfDll + dwGlowObjectManager)
-        print(glow_manager)
-        for i in range(1, 32):  # Entities 1-32 are reserved for players.
-            entity = pm.read_int(client.lpBaseOfDll + dwEntityList + i * 0x10)
-            clientst = pm.read_int(client.lpBaseOfDll + dwClientState + i * 0x10)
-            print (clientst)
-            if entity:
-                entity_team_id = pm.read_int(entity + m_iTeamNum)
-                entity_glow = pm.read_int(entity + m_iGlowIndex)
+        try:
+            #read("glow")
+            print("1")
+            for i in range(1, 32):  # Entities 1-32 are reserved for players.
+                entity = pm.read_int(client + dwEntityList + i * 0x10)
+                print("2")
+                if entity:
+                    entity_team_id = pm.read_int(entity + m_iTeamNum)
+                    player = pm.read_int(client + dwLocalPlayer)
+                    player_team = pm.read_int(player + m_iTeamNum)
+                    #entity_hp = pm.read_int(entity + m_iHealth)
+                    entity_glow = pm.read_int(entity + m_iGlowIndex)
 
-                print(entity_glow)
+                   # if features_check.check.glow_health_based:
 
 
-                pm.write_float(glow_manager + entity_glow * 0x38 + 0x4, float(1))   # R
-                pm.write_float(glow_manager + entity_glow * 0x38 + 0x8, float(0))   # G
-                pm.write_float(glow_manager + entity_glow * 0x38 + 0xC, float(0))   # B
-                pm.write_float(glow_manager + entity_glow * 0x38 + 0x10, float(0.5))  # Alpha
-                pm.write_int(glow_manager + entity_glow * 0x38 + 0x24, 1)           # Enable glow
+                    ennemies_color = [1, 0, 0, 0.5]
+                    allies_color = [0, 1, 0, 0.5]
+                    #all_color = [1, 1, 1, 1]
 
-               # Enable glow
+
+                    #if not features_check.check.glow_health_based:
+                    #    ennemies_color = self.rgba(features_check.check.ennemies_glow_color)
+                    #    allies_color = self.rgba(features_check.check.allies_glow_color)
+
+                   # if features_check.check.glow_allies:
+                   # pm.write_float(glow_manager + entity_glow * 0x38 + 0x4, float(all_color[0]))  # R
+                   # pm.write_float(glow_manager + entity_glow * 0x38 + 0x8, float(all_color[1]))  # G
+                  #  pm.write_float(glow_manager + entity_glow * 0x38 + 0xC, float(all_color[2]))  # B
+                   # pm.write_float(glow_manager + entity_glow * 0x38 + 0x10, float(all_color[3]))  # Alpha
+                   # pm.write_int(glow_manager + entity_glow * 0x38 + 0x24, 1)  # Enable glow
+
+                    if entity_team_id == player_team:  # Terrorist
+                        print('terrr')
+                        pm.write_float(glow_manager + entity_glow * 0x38 + 0x4, float(allies_color[0]))  # R
+                        pm.write_float(glow_manager + entity_glow * 0x38 + 0x8, float(allies_color[1]))  # G
+                        pm.write_float(glow_manager + entity_glow * 0x38 + 0xC, float(allies_color[2]))  # B
+                        pm.write_float(glow_manager + entity_glow * 0x38 + 0x10, float(allies_color[3]))  # Alpha
+                        pm.write_int(glow_manager + entity_glow * 0x38 + 0x24, 1)  # Enable glow
+
+                    #if features_check.check.glow_ennemies:
+
+                    if entity_team_id != player_team:  # Counter-terrorist
+                        print('ct')
+                        pm.write_float(glow_manager + entity_glow * 0x38 + 0x4, float(ennemies_color[0]))  # R
+                        pm.write_float(glow_manager + entity_glow * 0x38 + 0x8, float(ennemies_color[1]))  # G
+                        pm.write_float(glow_manager + entity_glow * 0x38 + 0xC, float(ennemies_color[2]))  # B
+                        pm.write_float(glow_manager + entity_glow * 0x38 + 0x10, float(ennemies_color[3]))  # Alpha
+                        pm.write_int(glow_manager + entity_glow * 0x38 + 0x24, 1)  # Enable glow
+
+                    #time.sleep(0.002)
+
+        except Exception as e:
+            print(e)
+
+    pm.close_process()
+
 
 
 def wall():
@@ -96,7 +150,7 @@ def main():
     while True:
         cheat = int(input("Enter Number  :  "))
         if cheat == 1:
-            makeitready()
+            #makeitready()
             esp()
         elif cheat == 2:
             makeitready()
@@ -126,3 +180,4 @@ if __name__ == '__main__':
 #https://github.com/frk1/hazedumper/blob/master/csgo.hpp
 #https://github.com/naaax123/Python-CSGO-Cheat
 #https://github.com/ALittlePatate/Rainbow-v2
+#https://raw.githubusercontent.com/frk1/hazedumper/master/csgo.json
