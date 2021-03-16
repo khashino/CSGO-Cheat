@@ -40,14 +40,14 @@ def esp():
     client = pymem.process.module_from_name(pm.process_handle, "client.dll").lpBaseOfDll
     glow_manager = pm.read_int(client + dwGlowObjectManager)
     #read("glow")
-    print("before while")
+   # print("before while")
     while True:
         try:
             #read("glow")
-            print("1")
+           # print("1")
             for i in range(1, 32):  # Entities 1-32 are reserved for players.
                 entity = pm.read_int(client + dwEntityList + i * 0x10)
-                print("2")
+                #print("2")
                 if entity:
                     entity_team_id = pm.read_int(entity + m_iTeamNum)
                     player = pm.read_int(client + dwLocalPlayer)
@@ -75,7 +75,7 @@ def esp():
                    # pm.write_int(glow_manager + entity_glow * 0x38 + 0x24, 1)  # Enable glow
 
                     if entity_team_id == player_team:  # Terrorist
-                        print('terrr')
+                        #print('terrr')
                         pm.write_float(glow_manager + entity_glow * 0x38 + 0x4, float(allies_color[0]))  # R
                         pm.write_float(glow_manager + entity_glow * 0x38 + 0x8, float(allies_color[1]))  # G
                         pm.write_float(glow_manager + entity_glow * 0x38 + 0xC, float(allies_color[2]))  # B
@@ -85,14 +85,14 @@ def esp():
                     #if features_check.check.glow_ennemies:
 
                     if entity_team_id != player_team:  # Counter-terrorist
-                        print('ct')
+                       # print('ct')
                         pm.write_float(glow_manager + entity_glow * 0x38 + 0x4, float(ennemies_color[0]))  # R
                         pm.write_float(glow_manager + entity_glow * 0x38 + 0x8, float(ennemies_color[1]))  # G
                         pm.write_float(glow_manager + entity_glow * 0x38 + 0xC, float(ennemies_color[2]))  # B
                         pm.write_float(glow_manager + entity_glow * 0x38 + 0x10, float(ennemies_color[3]))  # Alpha
                         pm.write_int(glow_manager + entity_glow * 0x38 + 0x24, 1)  # Enable glow
 
-                    #time.sleep(0.002)
+                    time.sleep(0.002)
 
         except Exception as e:
             print(e)
