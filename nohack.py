@@ -125,3 +125,4 @@ if __name__ == '__main__':
 #https://github.com/danielkrupinski/OneByteRadar/blob/master/OneByteRadar.py
 #https://github.com/frk1/hazedumper/blob/master/csgo.hpp
 #https://github.com/naaax123/Python-CSGO-Cheat
+#https://github.com/ALittlePatate/Rainbow-v2
