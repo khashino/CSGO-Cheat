@@ -92,7 +92,7 @@ def esp():
                         pm.write_float(glow_manager + entity_glow * 0x38 + 0x10, float(ennemies_color[3]))  # Alpha
                         pm.write_int(glow_manager + entity_glow * 0x38 + 0x24, 1)  # Enable glow
 
-                    time.sleep(0.002)
+                    #time.sleep(0.002)
 
         except Exception as e:
             print(e)
