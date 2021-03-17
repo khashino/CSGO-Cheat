@@ -58,7 +58,7 @@ def esp():
                    # if features_check.check.glow_health_based:
 
 
-                    ennemies_color = [1, 0, 0, 0.5]
+                    ennemies_color = [1, 0, 0, 1.5]
                     allies_color = [0, 1, 0, 0.5]
                     #all_color = [1, 1, 1, 1]
 
