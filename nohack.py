@@ -13,13 +13,13 @@ import argparse
 #dwClientState = (0x58EFE4)
 #dwLocalPlayer = (0xD8B2CC)
 
-dwEntityList = int(81407828)
-dwGlowObjectManager = int(86947144)
+dwEntityList = int(81412004)
+dwGlowObjectManager = int(86951320)
 m_iGlowIndex = int(42040)
 m_iTeamNum = int(244)
-dwRadarBase = int(85818572)
+dwRadarBase = int(85822748)
 dwClientState = int(5828580)
-dwLocalPlayer = int(14201548)
+dwLocalPlayer = int(14205644)
 def makeitready():
     global pm
     global client
