@@ -13,11 +13,11 @@ import argparse
 #dwClientState = (0x58EFE4)
 #dwLocalPlayer = (0xD8B2CC)
 
-dwEntityList = int(81412004)
-dwGlowObjectManager = int(86951320)
+dwEntityList = int(81411908)
+dwGlowObjectManager = int(86951256)
 m_iGlowIndex = int(42040)
 m_iTeamNum = int(244)
-dwRadarBase = int(85822748)
+dwRadarBase = int(85822652)
 dwClientState = int(5828580)
 dwLocalPlayer = int(14205644)
 def makeitready():
