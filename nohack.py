@@ -2,6 +2,7 @@ import pymem
 import pymem.process
 import re
 import time
+import requests
 import argparse
 
 
@@ -125,6 +126,15 @@ def Money():
     pm.write_uchar(address, 0xEB if pm.read_uchar(address) == 0x75 else 0x75)
 
 def main():
+    
+    URL = "https://khashino.ir/csgo.html"
+    r = requests.get(url=URL)
+    response = r.content.decode("utf-8")
+    if response == '0':
+        print('Cheat Is Unavailable For Now!!!!!! :D try later!')
+        time.sleep(2)
+        exit()
+
     print("         _             _            _       _    _                    _             _        ")
     print("        /\ \     _    /\ \         / /\    / /\ / /\                /\ \           /\_\      ")
     print("       /  \ \   /\_\ /  \ \       / / /   / / // /  \              /  \ \         / / /  _   ")
@@ -146,6 +156,9 @@ def main():
     print("")
     print("USAGE:")
     print("1: Wall Hack (Recomended) \n2: radar hack \n3: show enemy money \n4: Another Wall Hack\n5: Turn Off\n6: Exit")
+
+
+
 
     while True:
         cheat = int(input("Enter Number  :  "))
